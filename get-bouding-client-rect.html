@@ -19,14 +19,14 @@
         }
 
         .box {
-            width: 10rem;
-            height: 10rem;
+            width: 20rem;padding: 1rem;
+            height: 8rem;
         }
     </style>
 </head>
 
 <body>
-    
+
     <div class="space">
         <h1>Demonstrate the <b>getBoundingClientRect()</b> method</h1>
         <div>
@@ -119,31 +119,39 @@
         </div>
 
         <h2>Below box is target we used</h2>
-        <!-- Target box to check GetBoundigClientRect method -->
-        <div class="box"></div>
+        <!-- Target box to check GetBoundingClientRect method -->
+        <div class="box">
+            <p>window innerHeight: <span id="windowTopValue"></span></p>
+            <p>Element top value: <span id="elementTop"></span></p>
+        </div>
 
     </div>
 
 
     <script>
-        // GetBoundigClientRect method
+        // GetBoundingClientRect method
         var box = document.querySelector('.box');
         var body = document.querySelector('body');
 
         body.onscroll = function () {
             var box = document.querySelector('.box');
-
+            var windowTopValue = document.querySelector('#windowTopValue');
+            var elementTop = document.querySelector('#elementTop');
             var topValue = box.getBoundingClientRect().top;
             if (topValue < window.innerHeight) {
                 body.style.backgroundColor = "#f09";
                 box.style.backgroundColor = "#0e5cad";
                 body.style.color = "#fff";
+                windowTopValue.textContent = window.innerHeight+'px';
+                elementTop.textContent = box.getBoundingClientRect().top+'px';
+                console.log(windowTopValue.textContent);
+                console.log(elementTop.textContent);
                 console.log("Box came to view section");
-                // alert("Box came to view section");
             } else {
                 body.style.backgroundColor = "inherit";
                 body.style.color = "inherit";
                 box.style.backgroundColor = "#000";
+                console.clear();
             }
         }
     </script>
