@@ -130,14 +130,14 @@
 
     <script>
         // GetBoundingClientRect method
-        var box = document.querySelector('.box');
-        var body = document.querySelector('body');
+        const box = document.querySelector('.box');
+        const body = document.querySelector('body');
 
         body.onscroll = function () {
-            var box = document.querySelector('.box');
-            var windowTopValue = document.querySelector('#windowTopValue');
-            var elementTop = document.querySelector('#elementTop');
-            var topValue = box.getBoundingClientRect().top;
+            const box = document.querySelector('.box');
+            const windowTopValue = document.querySelector('#windowTopValue');
+            const elementTop = document.querySelector('#elementTop');
+            const topValue = box.getBoundingClientRect().top;
             if (topValue < window.innerHeight) {
                 body.style.backgroundColor = "#f09";
                 box.style.backgroundColor = "#0e5cad";

@@ -51,7 +51,7 @@
     <script>
         // ProgressBar
 
-        var progressBarSelector = document.querySelector('.progress-bar');
+        const progressBarSelector = document.querySelector('.progress-bar');
 
         class ProgressBar {
             constructor(element, initialValue = 0) {
@@ -75,7 +75,7 @@
                 this.progressValue.textContent = progress;
             }
         }
-        var myProgress = new ProgressBar(progressBarSelector, 50);
+        const myProgress = new ProgressBar(progressBarSelector, 50);
         // You can console.log by using "myProgress.setValue(number - 80)"
     </script>
 
