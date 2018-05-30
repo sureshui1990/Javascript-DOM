@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Dom - Progressive bar</title>
+    <style>
+        .space {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="space">
+        <h1>Document fragment</h1>
+        <h2>Ben10 Alien list:</h2>
+        <ul id="list">
+            <li>Hamangasaur</li>
+            <li id="rathItem">Rath</li>
+            <li>Echo Echo</li>
+        </ul>
+    </div>
+
+    <script>
+        // InsertBefore
+        var list= document.getElementById('list');
+        var goopItem = document.createElement('li');
+        goopItem.textContent = "Goop";
+        var rathItem= document.getElementById('rathItem');
+        list.insertBefore(goopItem,rathItem);
+
+        function appendFirstChild(parent, childToBeAppend){
+            const firstElementChild = parent.firstElementChild;
+            parent.insertBefore(childToBeAppend,firstElementChild);
+        }
+        // appendFirstChild(list,goopItem);
+
+    </script>
+
+</body>
+
+</html>
