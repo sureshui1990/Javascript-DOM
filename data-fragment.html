@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Dom - Progressive bar</title>
+    <style>
+        .space {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="space">
+        <h1>DataSet bar</h1>
+        <ul id="list">
+            <li>Rath</li>
+        </ul>
+    </div>
+
+    <script>
+        // document fragment
+
+    var list= document.getElementById('list');
+    var listFragment= document.createDocumentFragment();
+    var list1 = document.createElement("li");
+    var list2 = document.createElement("li");
+    list1.textContent = "FourArms";list2.textContent = "WayBig";
+    listFragment.appendChild(list1);listFragment.appendChild(list2);
+    console.log(listFragment);
+    list.appendChild(listFragment);
+    // There is no use after use the document fragment
+    console.log(listFragment);
+
+    </script>
+
+</body>
+
+</html>
