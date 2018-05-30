@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JS Dom - Progressive bar</title>
     <style>
-        .space{
+        .space {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 1rem;
         }
-    
-    .progress-bar{
-            width:20rem;height:3rem;
-            border: 1px solid #66a509;position: relative;
+
+        .progress-bar {
+            width: 20rem;
+            height: 3rem;
+            border: 1px solid #66a509;
+            position: relative;
         }
-        .progress-bar-value{
-            position: absolute;height:100%;width: 100%;
-            display: flex;justify-content: center;align-items: center;
+
+        .progress-bar-value {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .progress-bar-fill{
+
+        .progress-bar-fill {
             background-color: #66d030;
             height: 100%;
             transition: width ease 1s;
@@ -27,47 +36,48 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="space">
+    <div class="space">
         <div class="progress-bar">
-                <div class="progress-bar-value">45%</div>
-                <div class="progress-bar-fill"></div>
-            </div>
+            <div class="progress-bar-value">45%</div>
+            <div class="progress-bar-fill"></div>
+        </div>
 
-</div>
+    </div>
 
-   <script>
-       // ProgressBar
+    <script>
+        // ProgressBar
 
-var progressBarSelector = document.querySelector('.progress-bar');
+        var progressBarSelector = document.querySelector('.progress-bar');
 
-class ProgressBar{
-    constructor(element,initialValue = 0){
-        this.progressValue = element.querySelector(".progress-bar-value");
-        this.progressFill = element.querySelector(".progress-bar-fill");
-        this.setValue(initialValue);
-    }
-    setValue(newValue){
-        if(newValue < 0){
-            newValue = 0;
+        class ProgressBar {
+            constructor(element, initialValue = 0) {
+                this.progressValue = element.querySelector(".progress-bar-value");
+                this.progressFill = element.querySelector(".progress-bar-fill");
+                this.setValue(initialValue);
+            }
+            setValue(newValue) {
+                if (newValue < 0) {
+                    newValue = 0;
+                }
+                if (newValue > 100) {
+                    newValue = 100;
+                }
+                this.value = newValue;
+                this.upDataValue();
+            }
+            upDataValue() {
+                const progress = this.value + '%';
+                this.progressFill.style.width = progress;
+                this.progressValue.textContent = progress;
+            }
         }
-        if(newValue > 100){
-            newValue = 100;
-        }
-        this.value = newValue;
-        this.upDataValue();
-    }
-    upDataValue(){
-        const progress = this.value + '%';
-        this.progressFill.style.width = progress;
-        this.progressValue.textContent = progress;
-    }
-}
-var myProgress = new ProgressBar(progressBarSelector, 50);
-// You can console.log by using "myProgress.setValue(number - 80)"
-    
+        var myProgress = new ProgressBar(progressBarSelector, 50);
+        // You can console.log by using "myProgress.setValue(number - 80)"
     </script>
-    
+
 </body>
+
 </html>
