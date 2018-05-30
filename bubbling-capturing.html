@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Dom - Bubbling and Capturing</title>
+    <style>
+        .space {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1rem;
+        }
+        .parent{
+            background-color: #29bdcc;padding: .5rem;
+        }
+        .child{
+            background-color: #f14383;padding: .5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="space">
+        <h1>Demonstration of bubbling and capturing event method</h1>
+
+        <h2>Bubbling method</h2>
+        <p><b>Event</b> takes-place from inner to outer</p>
+        <div class="bubbling">
+            <div class="parent">Four Arms' DNA was sampled from a Tetramand, powerful 12 foot tall aliens with four arms and armor plated skin from planet Khoros. Khoros is a dusty and barbaric world where might makes right and survival is a constant struggle. Due to constant conflict, the planet's culture has long devolved, turning from a confederation of thriving city states into a scorched and boundless wasteland. Nomadic tribes ruled by bloodthirsty warlords ceaselessly roam the landscape, seeking out relics of Khoros' past glory, all in hopes of rediscovering the secrets that will gain them advantage over their enemies
+                <p class="child">In a Single Bound: Not one of his main powers, but he can do it.</p>
+                Nomadic tribes ruled by bloodthirsty warlords ceaselessly roam the landscape, seeking out relics of Khoros' past glory, all in hopes of rediscovering the secrets that will gain them advantage over their enemies
+                <p class="child">Punny Name: Forearms = Four Arms = 4 arms</p>
+                Nomadic tribes ruled by bloodthirsty warlords ceaselessly roam the landscape, seeking out relics of Khoros' past glory, all in hopes of rediscovering the secrets that will gain them advantage over their enemies
+                Nomadic tribes ruled by bloodthirsty warlords ceaselessly roam the landscape, seeking out relics of Khoros' past glory, all in hopes of rediscovering the secrets that will gain them advantage over their enemies
+            </div>
+        </div>
+
+        <h2>Capturing</h2>
+        <p><b>Event</b> takes-place from outer to inner</p>
+        <div class="capturing">
+            <div class="parent">Humungousaur was sampled from a Vauxausaurian from planet Terradino. A beautiful, mountainous, and lush world, Terradino is home to a vast and varied number of diverse animalistic alien species, many creatures great and small. Tragically, all these different species have not evolved to live here together peacefully. Warring factions in every group constantly seek to wrench control of society for themselves. However, the Vaxasaurians have been able to temporarily restore order through their sheer physical superiority
+                <p class="child">Suspiciously Similar Substitute: To Four Arms in Alien Force and Ultimate Alien, as both are the large strength aliens.</p>
+                Humungousaur was sampled from a Vauxausaurian from planet Terradino. A beautiful, mountainous, and lush world, Terradino is home to a vast and varied number of diverse animalistic alien species, many creatures great and small. Tragically, all these different species have not evolved to live here together peacefully. Warring factions in every group constantly seek to wrench control of society for themselves. However, the Vaxasaurians have been able to temporarily restore order through their sheer physical superiority
+                <p class="child">Made of Iron: Took lasers and missiles directly and only staggered.</p>
+                A beautiful, mountainous, and lush world, Terradino is home to a vast and varied number of diverse animalistic alien species, many creatures great and small. Tragically, all these different species have not evolved to live here together peacefully. Warring factions in every group constantly seek to wrench control of society for themselves. However, the Vaxasaurians have been able to temporarily restore order through their sheer physical superiority
+                Humungousaur was sampled from a Vauxausaurian from planet Terradino. A beautiful, mountainous, and lush world, Terradino is home to a vast and varied number of diverse animalistic alien species, many creatures great and small. Tragically, all these different species have not evolved to live here together peacefully. Warring factions in every group constantly seek to wrench control of society for themselves. However, the Vaxasaurians have been able to temporarily restore order through their sheer physical superiority
+            </div>
+        </div>        
+
+    </div>
+
+    <script>
+        // variable declared
+        const bubbling = document.querySelector('.bubbling');
+        const capturing = document.querySelector('.capturing');
+        const parent = bubbling.querySelector('.parent');
+        const child = parent.querySelectorAll('.child');
+
+        // mouseEvent function
+        const mouseEnterEvent = (eventName) => {
+            console.clear();
+            console.log(`You have entered ${eventName} method section.`);
+            parent.addEventListener('click', () => {
+            console.log(`Clicked me, Its Parent`);
+        });
+        // we have used forEach for array of children
+        child.forEach( element => {
+            console.log(element);
+            element.addEventListener('click', () => {
+            console.log(`Clicked me, Its Child`);
+        })
+        });
+        }
+
+        // addEventListener for each method
+        bubbling.addEventListener('mouseenter', () => {
+            mouseEnterEvent("Bubbling");
+        });
+        capturing.addEventListener('mouseenter', () => {
+            mouseEnterEvent("Capturing");
+        },true);
+
+    </script>
+
+</body>
+
+</html>
