@@ -11,15 +11,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 1rem;
         }
-        input{
-            padding: .5rem;border: 1px solid #ccc;
-        }
-        .highlight{
-            padding: .3rem;background-color: #ececec;color:#000;
-            margin:.6rem 0;
+
+        input {
+            padding: .5rem;
+            border: 1px solid #ccc;
         }
 
-        
+        .highlight {
+            padding: .3rem;
+            background-color: #ececec;
+            color: #000;
+            margin: .6rem 0;
+        }
     </style>
 </head>
 
@@ -27,17 +30,19 @@
 
     <div class="space">
         <h1>Local Storage - JavaScript</h1>
-       
+
         <fieldset>
             <legend>Insert the data</legend>
-            <p><input type="text" placeholder="Enter the key" value="" id="inpKey" />
+            <p>
+                <input type="text" placeholder="Enter the key" value="" id="inpKey" />
                 <input type="text" placeholder="Enter the value" id="inpValue" value="" />
-            <input type="submit" value="Insert data" id="submitData"></p>
+                <input type="submit" value="Insert data" id="submitData">
+            </p>
         </fieldset>
-    <fieldset>
-        <legend>Local storage data</legend>
-        <div id="output"></div>        
-    </fieldset>
+        <fieldset>
+            <legend>Local storage data</legend>
+            <div id="output"></div>
+        </fieldset>
 
     </div>
 
@@ -54,28 +59,32 @@
         localStorage.clear();
 
         // submit the data of input fields - Onclick event
-        submitData.onclick = function(){
+        submitData.onclick = function () {
             const key = inpKey.value;
             const value = inpValue.value;
 
             // rest the input fields
-            inpKey.value = '';inpValue.value = '';
-            if(key && value){;
+            inpKey.value = '';
+            inpValue.value = '';
+            if (key && value) {;
                 localStorage.setItem(key, value);
                 console.log(localStorage);
             }
-        // Get the value of localStorage data through loop
-        for(let i =0; i <= (localStorage.length-1); i++){
-            const key = localStorage.key(i);
-            const value = localStorage.getItem(key);
-            // bind the value in html-view
-            output.innerHTML += `<div class="highlight"><small>Key:</small> <b>${key}</b> ||  <small>Value:</small> <b>${value}</b></div>`;
+
+            // empty the output section as empty which helps to remove exited content while new number of element present            
+            output.innerHTML = "";
+
+            // Get the value of localStorage data through loop
+            for (let i = 0; i <= (localStorage.length - 1); i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                // bind the value in html-view
+                output.innerHTML +=
+                    `<div class="highlight"> ${i+1}. <small>Key:</small> <b>${key}</b> ||  <small>Value:</small> <b>${value}</b></div>`;
+            }
+
+
         }
-                  
-        }
-
-
-
     </script>
 
 </body>
